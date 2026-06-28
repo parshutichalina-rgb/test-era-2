@@ -35,9 +35,9 @@ function typeLabel(type: GenerationTask["type"]): string {
 
 function EclipseIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={cn("h-4 w-4 text-[#FF7A3D]", className)} aria-hidden="true">
+    <svg viewBox="0 0 24 24" className={cn("h-4 w-4 text-[var(--c-accent-2)]", className)} aria-hidden="true">
       <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="2.4" fill="none" />
-      <path d="M12 3.5a8.5 8.5 0 0 1 0 17" stroke="#141110" strokeWidth="4.4" strokeLinecap="round" />
+      <path d="M12 3.5a8.5 8.5 0 0 1 0 17" stroke="var(--bg-card)" strokeWidth="4.4" strokeLinecap="round" />
     </svg>
   );
 }
@@ -84,13 +84,13 @@ export function GlobalQueueStatusBar() {
         <button
           type="button"
           onClick={() => setIsCollapsed(false)}
-          className="ml-auto inline-flex h-11 w-full items-center gap-2 overflow-hidden rounded-full border border-[#E85420]/60 bg-[#141110]/95 px-3 text-[12px] font-medium text-[#F6EFE9] shadow-[0_18px_45px_-30px_rgba(0,0,0,0.7)] backdrop-blur-sm sm:w-auto sm:max-w-full sm:px-4 sm:text-[13px]"
+          className="ml-auto inline-flex h-11 w-full items-center gap-2 overflow-hidden rounded-full border border-[var(--border-hover)] bg-[color-mix(in_oklab,var(--bg-card)_95%,transparent)] px-3 text-[12px] font-medium text-[var(--text-primary)] shadow-[0_18px_45px_-30px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:w-auto sm:max-w-full sm:px-4 sm:text-[13px]"
         >
           <EclipseIcon />
           <span className="truncate">
             {activitySummary.activeCount} {pluralizeGenerations(activitySummary.activeCount)}
           </span>
-          <span className="shrink-0 text-[#FF7A3D]">· {activitySummary.averageProgress}%</span>
+          <span className="shrink-0 text-[var(--c-accent-2)]">· {activitySummary.averageProgress}%</span>
         </button>
       </div>
     );
@@ -99,14 +99,14 @@ export function GlobalQueueStatusBar() {
   return (
     <div className={shellClasses}>
       {activitySummary.activeCount === 1 && primaryTask ? (
-        <div className="w-full max-w-[calc(100vw-1rem)] rounded-3xl border border-[#7a2e12] bg-[#141110]/95 p-4 shadow-[0_24px_60px_-35px_rgba(232,84,32,0.55)] backdrop-blur-sm sm:max-w-none">
+        <div className="w-full max-w-[calc(100vw-1rem)] rounded-3xl border border-[var(--border-hover)] bg-[color-mix(in_oklab,var(--bg-card)_95%,transparent)] p-4 shadow-[0_24px_60px_-35px_rgba(232,84,32,0.25)] backdrop-blur-sm sm:max-w-none">
           <div className="mb-3 flex items-start justify-between gap-3">
             <button type="button" onClick={() => navigate("/queue")} className="min-w-0 text-left">
-              <p className="flex items-center gap-2 text-[13px] font-semibold text-[#F6EFE9]">
+              <p className="flex items-center gap-2 text-[13px] font-semibold text-[var(--text-primary)]">
                 <EclipseIcon />
                 Генерация {typeLabel(primaryTask.type)}
               </p>
-              <p className="mt-1 text-[11px] text-[#8A7F78]">
+              <p className="mt-1 text-[11px] text-[var(--text-tertiary)]">
                 {primaryTask.modelName} · {primaryTask.progress}%
               </p>
             </button>
@@ -114,7 +114,7 @@ export function GlobalQueueStatusBar() {
               <button
                 type="button"
                 onClick={() => navigate("/queue")}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-md text-[#8A7F78] hover:text-[#F6EFE9]"
+                className="inline-flex h-7 w-7 items-center justify-center rounded-md text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
                 aria-label="Открыть очередь"
               >
                 <ArrowRight size={14} />
@@ -122,7 +122,7 @@ export function GlobalQueueStatusBar() {
               <button
                 type="button"
                 onClick={() => setIsCollapsed(true)}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-md text-[#8A7F78] hover:text-[#F6EFE9]"
+                className="inline-flex h-7 w-7 items-center justify-center rounded-md text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
                 aria-label="Свернуть статус-бар"
               >
                 <ChevronDown size={14} />
@@ -133,25 +133,25 @@ export function GlobalQueueStatusBar() {
           <button type="button" onClick={() => navigate("/queue")} className="block w-full text-left">
             <div className="mb-2.5 flex items-center gap-2">
               <div
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[#FF7A3D]"
-                style={{ background: "linear-gradient(135deg, #3B1A0A 0%, #1A1614 70.72%)" }}
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--border-primary)] text-[var(--c-accent-2)]"
+                style={{ background: "var(--seo-gradient-placeholder)" }}
               >
                 <TaskTypeIcon type={primaryTask.type} />
               </div>
-              <p className="line-clamp-2 text-sm text-[#C8BEB6]">{primaryTask.prompt}</p>
+              <p className="line-clamp-2 text-sm text-[var(--text-secondary)]">{primaryTask.prompt}</p>
             </div>
             <ProgressBar value={primaryTask.progress} className="w-full" />
           </button>
         </div>
       ) : (
-        <div className="w-full max-w-[calc(100vw-1rem)] rounded-3xl border border-[#7a2e12] bg-[#141110]/95 p-4 shadow-[0_24px_60px_-35px_rgba(232,84,32,0.55)] backdrop-blur-sm sm:max-w-none">
+        <div className="w-full max-w-[calc(100vw-1rem)] rounded-3xl border border-[var(--border-hover)] bg-[color-mix(in_oklab,var(--bg-card)_95%,transparent)] p-4 shadow-[0_24px_60px_-35px_rgba(232,84,32,0.25)] backdrop-blur-sm sm:max-w-none">
           <div className="mb-3 flex items-start justify-between gap-3">
             <button type="button" onClick={() => navigate("/queue")} className="text-left">
-              <p className="flex items-center gap-2 text-[13px] font-semibold text-[#F6EFE9]">
+              <p className="flex items-center gap-2 text-[13px] font-semibold text-[var(--text-primary)]">
                 <EclipseIcon />
                 Генерации идут
               </p>
-              <p className="mt-1 text-[11px] text-[#8A7F78]">
+              <p className="mt-1 text-[11px] text-[var(--text-tertiary)]">
                 {activitySummary.activeCount} активны · {activitySummary.averageProgress}%
               </p>
             </button>
@@ -159,7 +159,7 @@ export function GlobalQueueStatusBar() {
             <button
               type="button"
               onClick={() => setIsCollapsed(true)}
-              className="inline-flex h-7 w-7 items-center justify-center rounded-md text-[#8A7F78] hover:text-[#F6EFE9]"
+              className="inline-flex h-7 w-7 items-center justify-center rounded-md text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
               aria-label="Свернуть статус-бар"
             >
               <ChevronUp size={14} />
@@ -176,16 +176,16 @@ export function GlobalQueueStatusBar() {
               >
                 <div className="mb-1.5 flex items-center gap-2">
                   <div
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[#FF7A3D]"
-                    style={{ background: "linear-gradient(135deg, #3B1A0A 0%, #1A1614 70.72%)" }}
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--border-primary)] text-[var(--c-accent-2)]"
+                    style={{ background: "var(--seo-gradient-placeholder)" }}
                   >
                     <TaskTypeIcon type={task.type} />
                   </div>
-                  <p className="truncate text-[12px] text-[#C8BEB6]">{task.prompt}</p>
+                  <p className="truncate text-[12px] text-[var(--text-secondary)]">{task.prompt}</p>
                   {task.status === TASK_STATUSES.QUEUED ? (
-                    <span className="text-[11px] text-[#8A7F78]">в очереди</span>
+                    <span className="text-[11px] text-[var(--text-tertiary)]">в очереди</span>
                   ) : (
-                    <span className="text-[11px] font-semibold text-[#FF7A3D]">{task.progress}%</span>
+                    <span className="text-[11px] font-semibold text-[var(--c-accent-2)]">{task.progress}%</span>
                   )}
                 </div>
                 {task.status === TASK_STATUSES.QUEUED ? null : (
@@ -198,7 +198,7 @@ export function GlobalQueueStatusBar() {
           <button
             type="button"
             onClick={() => navigate("/queue")}
-            className="mt-3 inline-flex items-center text-[13px] font-semibold text-[#FF7A3D] hover:text-[#ff9e7a]"
+            className="mt-3 inline-flex items-center text-[13px] font-semibold text-[var(--c-accent)] hover:text-[var(--c-accent-2)]"
           >
             Открыть очередь <ArrowRight size={16} className="ml-1" />
           </button>

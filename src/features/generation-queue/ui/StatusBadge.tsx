@@ -11,11 +11,11 @@ const LABELS: Record<TaskStatus, string> = {
 };
 
 const STYLES: Record<TaskStatus, string> = {
-  [TASK_STATUSES.QUEUED]: "bg-[#221C19] text-[#8A7F78] border-[#2A221E]",
-  [TASK_STATUSES.RUNNING]: "bg-[#3A1A0A] text-[#FF7A3D] border-[#E85420]/40",
+  [TASK_STATUSES.QUEUED]: "bg-[var(--bg-pill)] text-[var(--text-tertiary)] border-[var(--border-primary)]",
+  [TASK_STATUSES.RUNNING]: "bg-[var(--c-accent-soft)] text-[var(--c-accent-2)] border-[var(--border-hover)]",
   [TASK_STATUSES.DONE]: "bg-emerald-500/15 text-emerald-400 border-emerald-500/35",
   [TASK_STATUSES.FAILED]: "bg-rose-500/15 text-rose-400 border-rose-500/35",
-  [TASK_STATUSES.CANCELED]: "bg-zinc-500/15 text-zinc-400 border-zinc-500/35",
+  [TASK_STATUSES.CANCELED]: "bg-[var(--bg-pill)] text-[var(--text-muted)] border-[var(--border-primary)]",
 };
 
 export function StatusBadge({ status, className }: { status: TaskStatus; className?: string }) {

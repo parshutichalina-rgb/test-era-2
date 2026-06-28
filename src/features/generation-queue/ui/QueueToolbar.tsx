@@ -45,13 +45,13 @@ export function QueueToolbar({
       <label className="relative block">
         <Search
           size={14}
-          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#8A7F78]"
+          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]"
         />
         <input
           value={localSearch}
           onChange={(event) => setLocalSearch(event.target.value)}
           placeholder="Поиск по промпту/модели"
-          className="h-9 w-full rounded-full border border-[#2A221E] bg-[#141110] pl-9 pr-4 text-sm text-[#F6EFE9] placeholder:text-[#8A7F78] focus:outline-none focus:ring-1 focus:ring-[#E85420]/60"
+          className="h-9 w-full rounded-full border border-[var(--border-primary)] bg-[var(--bg-card)] pl-9 pr-4 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-1 focus:ring-[var(--c-accent)]/60"
         />
       </label>
       <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
@@ -63,8 +63,8 @@ export function QueueToolbar({
             className={cn(
               "h-8 shrink-0 rounded-full border px-3.5 text-[13px] font-medium transition-colors",
               filter === item.value
-                ? "border-[#E85420] bg-[#E85420] text-white"
-                : "border-[#2A221E] bg-[#1A1614] text-[#C8BEB6] hover:border-[#3A2F29]",
+                ? "border-[var(--c-accent)] bg-[var(--c-accent)] text-white"
+                : "border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:border-[var(--border-hover)]",
             )}
           >
             {item.label}
@@ -80,7 +80,7 @@ export function QueueToolbar({
                 : QUEUE_SORT_ORDERS.NEWEST_FIRST,
             )
           }
-          className="ml-2 inline-flex h-8 shrink-0 items-center gap-1 rounded-full border border-[#2A221E] bg-[#1A1614] px-3.5 text-[13px] font-medium text-[#C8BEB6]"
+          className="ml-2 inline-flex h-8 shrink-0 items-center gap-1 rounded-full border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3.5 text-[13px] font-medium text-[var(--text-secondary)] hover:border-[var(--border-hover)]"
         >
           {sortOrder === QUEUE_SORT_ORDERS.NEWEST_FIRST ? "Сначала новые" : "Сначала старые"}
           <ChevronDown size={12} />

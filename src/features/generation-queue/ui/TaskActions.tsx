@@ -28,7 +28,7 @@ function ActionIconButton({
       title={title}
       aria-label={title}
       onClick={onClick}
-      className="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-[#2A221E] bg-[#1A1614] text-[#8A7F78] transition-colors hover:text-[#F6EFE9] hover:border-[#3A2F29]"
+      className="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-primary)] hover:border-[var(--border-hover)]"
     >
       {children}
     </button>

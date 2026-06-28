@@ -40,25 +40,25 @@ export function TaskRow({
 
   return (
     <article
-      className={`rounded-lg border bg-[#141110] px-4 py-3.5 transition-colors ${
-        isRunning ? "border-[#E85420]/70" : "border-[#2A221E]"
+      className={`rounded-lg border bg-[var(--bg-card)] px-4 py-3.5 transition-colors ${
+        isRunning ? "border-[var(--c-accent)]/70" : "border-[var(--border-primary)]"
       }`}
     >
       <div className="grid grid-cols-[56px_1fr_auto] items-center gap-4">
         <div
-          className="flex h-14 w-14 items-center justify-center rounded-md text-[#FF7A3D]"
-          style={{ background: "linear-gradient(135deg, #3B1A0A 0%, #1A1614 70.72%)" }}
+          className="flex h-14 w-14 items-center justify-center rounded-md border border-[var(--border-primary)] text-[var(--c-accent-2)]"
+          style={{ background: "var(--seo-gradient-placeholder)" }}
         >
           <TaskTypeIcon type={task.type} />
         </div>
 
         <div className="min-w-0">
-          <p className="truncate text-[15px] leading-snug font-medium text-[#F6EFE9] md:text-[15px]">
+          <p className="truncate text-[15px] leading-snug font-medium text-[var(--text-primary)] md:text-[15px]">
             {task.prompt}
           </p>
-          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#8A7F78]">
-            <span className="inline-flex items-center gap-1 rounded-full bg-[#1A1614] px-2 py-0.5 text-[#C8BEB6]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#FF5A14]" />
+          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[var(--text-tertiary)]">
+            <span className="inline-flex items-center gap-1 rounded-full border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-2 py-0.5 text-[var(--text-secondary)]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--c-accent-2)]" />
               {task.modelName}
             </span>
             <span>{metaText}</span>
@@ -72,7 +72,7 @@ export function TaskRow({
 
         <div className="flex items-center gap-2">
           {isRunning ? (
-            <span className="text-xs font-medium text-[#FF7A3D]">{task.progress}%</span>
+            <span className="text-xs font-medium text-[var(--c-accent-2)]">{task.progress}%</span>
           ) : null}
           <StatusBadge status={task.status} />
           <TaskActions

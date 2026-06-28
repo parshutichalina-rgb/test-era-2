@@ -40,25 +40,25 @@ export function TaskCard({
 
   return (
     <article
-      className={`rounded-2xl border bg-[#141110] p-3 ${
-        isRunning ? "border-[#E85420]/75" : "border-[#2A221E]"
+      className={`rounded-2xl border bg-[var(--bg-card)] p-3 ${
+        isRunning ? "border-[var(--c-accent)]/75" : "border-[var(--border-primary)]"
       }`}
     >
       <div className="flex items-start gap-3">
         <div
-          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[12px] text-[#FF7A3D]"
-          style={{ background: "linear-gradient(135deg, #3B1A0A 0%, #1A1614 70.72%)" }}
+          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[12px] border border-[var(--border-primary)] text-[var(--c-accent-2)]"
+          style={{ background: "var(--seo-gradient-placeholder)" }}
         >
           <TaskTypeIcon type={task.type} />
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className="line-clamp-2 text-[16px] leading-snug font-medium text-[#F6EFE9]">
+          <p className="line-clamp-2 text-[16px] leading-snug font-medium text-[var(--text-primary)]">
             {task.prompt}
           </p>
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-[#8A7F78]">
-            <span className="inline-flex items-center gap-1 rounded-full bg-[#1A1614] px-2 py-0.5 text-[#C8BEB6]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#FF5A14]" />
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-[var(--text-tertiary)]">
+            <span className="inline-flex items-center gap-1 rounded-full border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-2 py-0.5 text-[var(--text-secondary)]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--c-accent-2)]" />
               {task.modelName}
             </span>
             <span>{metaText}</span>
@@ -71,7 +71,7 @@ export function TaskCard({
           <ProgressBar value={task.progress} className="w-full" />
           <div className="flex items-center gap-2">
             <StatusBadge status={task.status} className="h-6 px-2 text-[11px]" />
-            <span className="text-xs font-semibold text-[#FF7A3D]">{task.progress}%</span>
+            <span className="text-xs font-semibold text-[var(--c-accent-2)]">{task.progress}%</span>
             <TaskActions
               status={task.status}
               onCancel={() => onCancel(task.id)}

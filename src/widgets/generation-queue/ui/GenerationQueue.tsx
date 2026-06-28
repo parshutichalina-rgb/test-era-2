@@ -22,15 +22,20 @@ function GenerationQueueContent() {
 
   return (
     <section className="mx-auto w-full max-w-[1200px] px-4 py-6 md:py-8">
-      <div className="mb-5 flex items-start justify-between gap-3">
+      <div className="mb-5 flex items-start justify-between gap-3 flex-wrap">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight text-[#F6EFE9] md:text-5xl">
+          <h1 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)] md:text-5xl">
             Очередь генераций
           </h1>
-          <p className="mt-1 text-sm text-[#8A7F78]">Все ваши задачи в реальном времени</p>
+          <p className="mt-1 text-sm text-[var(--text-tertiary)]">Все ваши задачи в реальном времени</p>
         </div>
 
-        <Button variant="outline" size="sm" className="border-[#2A221E]" onClick={actions.clearDone}>
+        <Button
+          variant="outline"
+          size="sm"
+          className="border-[var(--border-primary)]"
+          onClick={actions.clearDone}
+        >
           Очистить готовые
         </Button>
       </div>
