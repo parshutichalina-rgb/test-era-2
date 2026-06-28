@@ -11,6 +11,7 @@ export { QueueStats } from "./ui/QueueStats";
 export { QueueToolbar } from "./ui/QueueToolbar";
 export { TaskRow } from "./ui/TaskRow";
 export { TaskCard } from "./ui/TaskCard";
+export { GlobalQueueStatusBar } from "./ui/GlobalQueueStatusBar";
 export { EmptyState } from "./ui/states/EmptyState";
 export { LoadingState } from "./ui/states/LoadingState";
 export { ErrorState } from "./ui/states/ErrorState";
