@@ -57,7 +57,7 @@ export function TaskRow({
             {task.prompt}
           </p>
           <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[var(--text-tertiary)]">
-            <span className="inline-flex items-center gap-1 rounded-full border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-2 py-0.5 text-[var(--text-secondary)]">
+            <span className="inline-flex items-center gap-1 rounded-full border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-2 py-0.5 font-mono text-[var(--text-secondary)]">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--c-accent-2)]" />
               {task.modelName}
             </span>
@@ -72,7 +72,7 @@ export function TaskRow({
 
         <div className="flex items-center gap-2">
           {isRunning ? (
-            <span className="text-xs font-medium text-[var(--c-accent-2)]">{task.progress}%</span>
+            <span className="font-mono text-xs font-medium text-[var(--c-accent-2)]">{task.progress}%</span>
           ) : null}
           <StatusBadge status={task.status} />
           <TaskActions

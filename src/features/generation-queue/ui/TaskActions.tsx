@@ -1,8 +1,14 @@
-import { Download, MoreHorizontal, RotateCw, X } from "lucide-react";
+import { Download, MoreHorizontal, RotateCw, Trash2, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { TASK_STATUSES } from "@/entities/generation-task";
 import type { TaskStatus } from "@/entities/generation-task";
 import { cn } from "@/shared/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/shared/ui/dropdown-menu";
 
 interface TaskActionsProps {
   status: TaskStatus;
@@ -67,9 +73,30 @@ export function TaskActions({
       <ActionIconButton title={primaryAction.title} onClick={primaryAction.onClick}>
         {primaryAction.icon}
       </ActionIconButton>
-      <ActionIconButton title="Удалить" onClick={onDelete}>
-        <MoreHorizontal size={14} />
-      </ActionIconButton>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button
+            type="button"
+            title="Меню действий"
+            aria-label="Меню действий"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[var(--text-tertiary)] transition-colors hover:text-[var(--text-primary)] hover:border-[var(--border-hover)]"
+          >
+            <MoreHorizontal size={14} />
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          align="end"
+          className="border-[var(--border-primary)] bg-[var(--bg-card)] text-[var(--text-primary)]"
+        >
+          <DropdownMenuItem
+            onClick={onDelete}
+            className="text-rose-500 focus:bg-rose-500/10 focus:text-rose-500"
+          >
+            <Trash2 size={14} />
+            Удалить
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 }

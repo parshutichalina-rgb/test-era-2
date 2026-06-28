@@ -6,6 +6,7 @@ import {
   ChevronUp,
   FileAudio2,
   Image as ImageIcon,
+  Loader2,
   Video,
 } from "lucide-react";
 import { TASK_STATUSES } from "@/entities/generation-task";
@@ -90,7 +91,9 @@ export function GlobalQueueStatusBar() {
           <span className="truncate">
             {activitySummary.activeCount} {pluralizeGenerations(activitySummary.activeCount)}
           </span>
-          <span className="shrink-0 text-[var(--c-accent-2)]">· {activitySummary.averageProgress}%</span>
+          <span className="shrink-0 font-mono text-[var(--c-accent-2)]">
+            · {activitySummary.averageProgress}%
+          </span>
         </button>
       </div>
     );
@@ -106,7 +109,8 @@ export function GlobalQueueStatusBar() {
                 <EclipseIcon />
                 Генерация {typeLabel(primaryTask.type)}
               </p>
-              <p className="mt-1 text-[11px] text-[var(--text-tertiary)]">
+              <p className="mt-1 flex items-center gap-1.5 font-mono text-[11px] text-[var(--text-tertiary)]">
+                <Loader2 size={10} className="animate-spin text-[var(--c-accent-2)]" />
                 {primaryTask.modelName} · {primaryTask.progress}%
               </p>
             </button>
@@ -151,7 +155,7 @@ export function GlobalQueueStatusBar() {
                 <EclipseIcon />
                 Генерации идут
               </p>
-              <p className="mt-1 text-[11px] text-[var(--text-tertiary)]">
+              <p className="mt-1 font-mono text-[11px] text-[var(--text-tertiary)]">
                 {activitySummary.activeCount} активны · {activitySummary.averageProgress}%
               </p>
             </button>
@@ -185,7 +189,9 @@ export function GlobalQueueStatusBar() {
                   {task.status === TASK_STATUSES.QUEUED ? (
                     <span className="text-[11px] text-[var(--text-tertiary)]">в очереди</span>
                   ) : (
-                    <span className="text-[11px] font-semibold text-[var(--c-accent-2)]">{task.progress}%</span>
+                    <span className="font-mono text-[11px] font-semibold text-[var(--c-accent-2)]">
+                      {task.progress}%
+                    </span>
                   )}
                 </div>
                 {task.status === TASK_STATUSES.QUEUED ? null : (

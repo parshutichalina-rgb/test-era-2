@@ -22,7 +22,7 @@ export function QueueStats({ queued, running, done, failed }: QueueStatsProps) {
             <span className={`h-1.5 w-1.5 rounded-full ${item.dotClassName}`} />
             {item.label}
           </p>
-          <p className="text-[34px] leading-none font-semibold tracking-tight text-[var(--text-primary)]">
+          <p className="font-mono text-[34px] leading-none font-semibold tracking-tight text-[var(--text-primary)]">
             {values[item.key]}
           </p>
         </div>
